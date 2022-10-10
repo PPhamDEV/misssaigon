@@ -4,301 +4,416 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    >
 
-    <TextView
-        android:id="@+id/btnDone"
-        android:layout_width="118dp"
-        android:layout_height="60dp"
-        android:paddingTop="7dp"
-        android:paddingBottom="7dp"
-        android:text="Done"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintStart_toStartOf="@+id/OrderList"
-        app:layout_constraintTop_toTopOf="@+id/tvSumme" />
 
-    <TextView
-        android:id="@+id/btn7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="140dp"
-        android:paddingLeft="14dp"
-        android:paddingTop="7dp"
-        android:paddingRight="14dp"
-        android:paddingBottom="7dp"
-        android:text="7"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="71dp"
+        tools:layout_editor_absoluteY="63dp">
 
-    <TextView
-        android:id="@+id/btn8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:paddingLeft="14dp"
-        android:paddingTop="7dp"
-        android:paddingRight="14dp"
-        android:paddingBottom="7dp"
-        android:text="8"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn7"
-        app:layout_constraintStart_toEndOf="@+id/btn7" />
+        <TextView
+            android:id="@+id/btnReis"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:paddingLeft="14dp"
+            android:paddingTop="7dp"
+            android:paddingRight="14dp"
+            android:paddingBottom="7dp"
+            android:text="Reis"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnH"
+            app:layout_constraintStart_toEndOf="@+id/btnH"
+            app:layout_constraintTop_toTopOf="@+id/btnH"
+            app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
-        android:id="@+id/btn4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:paddingLeft="14dp"
-        android:paddingTop="7dp"
-        android:paddingRight="14dp"
-        android:paddingBottom="7dp"
-        android:text="4"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintStart_toStartOf="@+id/btn7"
-        app:layout_constraintTop_toBottomOf="@+id/btn7" />
+        <TextView
+            android:id="@+id/btn1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="28dp"
+            android:padding="10dp"
+            android:text="1"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/btn4"
+            app:layout_constraintTop_toBottomOf="@+id/btn4" />
 
-    <TextView
-        android:id="@+id/btn5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:paddingLeft="14dp"
-        android:paddingTop="7dp"
-        android:paddingRight="14dp"
-        android:paddingBottom="7dp"
-        android:text="5"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn4"
-        app:layout_constraintStart_toEndOf="@+id/btn4" />
+        <TextView
+            android:id="@+id/btn2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:padding="10dp"
+            android:text="2"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn1"
+            app:layout_constraintStart_toEndOf="@+id/btn1" />
 
-    <TextView
-        android:id="@+id/btn6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:paddingLeft="14dp"
-        android:paddingTop="7dp"
-        android:paddingRight="14dp"
-        android:paddingBottom="7dp"
-        android:text="6"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn5"
-        app:layout_constraintStart_toEndOf="@+id/btn5" />
+        <TextView
+            android:id="@+id/btn3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:padding="10dp"
+            android:text="3"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn2"
+            app:layout_constraintStart_toEndOf="@+id/btn2" />
 
-    <TextView
-        android:id="@+id/btn1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:paddingLeft="14dp"
-        android:paddingTop="7dp"
-        android:paddingRight="14dp"
-        android:paddingBottom="7dp"
-        android:text="1"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintStart_toStartOf="@+id/btn4"
-        app:layout_constraintTop_toBottomOf="@+id/btn4" />
+        <TextView
+            android:id="@+id/btnG"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:paddingLeft="14dp"
+            android:paddingTop="7dp"
+            android:paddingRight="14dp"
+            android:paddingBottom="7dp"
+            android:text="g"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn3"
+            app:layout_constraintStart_toEndOf="@+id/btn3" />
 
-    <TextView
-        android:id="@+id/btn0"
-        android:layout_width="118dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="25dp"
-        android:paddingLeft="14dp"
-        android:paddingTop="7dp"
-        android:paddingRight="67dp"
-        android:paddingBottom="7dp"
-        android:text="0"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintStart_toStartOf="@+id/btn1"
-        app:layout_constraintTop_toBottomOf="@+id/btn1" />
+        <TextView
+            android:id="@+id/btn0"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            android:padding="10dp"
+            android:text="0"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/btn1"
+            app:layout_constraintTop_toBottomOf="@+id/btn1" />
 
-    <TextView
-        android:id="@+id/btnBack"
-        android:layout_width="118dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="39dp"
-        android:paddingTop="7dp"
-        android:paddingBottom="7dp"
-        android:text="Back"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintStart_toStartOf="@+id/btn0"
-        app:layout_constraintTop_toBottomOf="@+id/btn0" />
+        <TextView
+            android:id="@+id/btnH"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:paddingLeft="14dp"
+            android:paddingTop="7dp"
+            android:paddingRight="14dp"
+            android:paddingBottom="7dp"
+            android:text="h"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/btnG"
+            app:layout_constraintTop_toTopOf="@+id/btn0" />
 
-    <TextView
-        android:id="@+id/tvSumme"
-        android:layout_width="wrap_content"
-        android:layout_height="65dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="15dp"
-        android:paddingTop="7dp"
-        android:paddingBottom="7dp"
-        android:text="Summe:"
-        android:textAlignment="textStart"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toStartOf="@+id/tvSummeDisplay"
-        app:layout_constraintTop_toBottomOf="@+id/OrderList" />
+        <TextView
+            android:id="@+id/btnDone"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_marginEnd="20dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:text="Done"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/scrollView"
+            app:layout_constraintTop_toTopOf="@+id/scrollView" />
 
-    <TextView
-        android:id="@+id/tvSummeDisplay"
-        android:layout_width="250dp"
-        android:layout_height="65dp"
-        android:paddingTop="7dp"
-        android:paddingBottom="7dp"
-        android:textAlignment="textStart"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvSumme"
-        app:layout_constraintEnd_toEndOf="@+id/OrderList" />
+        <TextView
+            android:id="@+id/btnGetränk"
+            android:layout_width="55dp"
+            android:layout_height="50dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:text="G"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/btnH"
+            app:layout_constraintTop_toTopOf="@+id/btnSubmit" />
 
-    <TextView
-        android:id="@+id/btn2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:paddingLeft="14dp"
-        android:paddingTop="7dp"
-        android:paddingRight="14dp"
-        android:paddingBottom="7dp"
-        android:text="2"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn1"
-        app:layout_constraintStart_toEndOf="@+id/btn1" />
+        <TextView
+            android:id="@+id/btnBier"
+            android:layout_width="55dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="29dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:text="B"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/btnGetränkP"
+            app:layout_constraintTop_toTopOf="@+id/btnGetränkP" />
 
-    <TextView
-        android:id="@+id/btn3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:paddingLeft="14dp"
-        android:paddingTop="7dp"
-        android:paddingRight="14dp"
-        android:paddingBottom="7dp"
-        android:text="3"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn2"
-        app:layout_constraintStart_toEndOf="@+id/btn2" />
+        <TextView
+            android:id="@+id/btnGetränkP"
+            android:layout_width="55dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="28dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:text="G+P"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/btnGetränk"
+            app:layout_constraintTop_toTopOf="@+id/btnGetränk" />
 
-    <TextView
-        android:id="@+id/btn9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:paddingLeft="14dp"
-        android:paddingTop="7dp"
-        android:paddingRight="14dp"
-        android:paddingBottom="7dp"
-        android:text="9"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn8"
-        app:layout_constraintStart_toEndOf="@+id/btn8" />
+        <TextView
+            android:id="@+id/btnDeleteLast"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:gravity="center"
+            android:text="-"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvDisplay"
+            app:layout_constraintStart_toStartOf="@+id/btnGroß"
+            app:layout_constraintTop_toTopOf="@+id/tvDisplay"
+            app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/btnB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:paddingLeft="14dp"
-        android:paddingTop="7dp"
-        android:paddingRight="14dp"
-        android:paddingBottom="7dp"
-        android:text="b"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn6"
-        app:layout_constraintStart_toEndOf="@+id/btn6" />
+        <TextView
+            android:id="@+id/btn7"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="140dp"
+            android:padding="10dp"
+            android:text="7"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/tvDisplay"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/btnG"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="51dp"
-        android:paddingLeft="14dp"
-        android:paddingTop="7dp"
-        android:paddingRight="14dp"
-        android:paddingBottom="7dp"
-        android:text="g"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn3"
-        app:layout_constraintStart_toEndOf="@+id/btn3" />
+        <TextView
+            android:id="@+id/btn8"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:padding="10dp"
+            android:text="8"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn7"
+            app:layout_constraintStart_toEndOf="@+id/btn7" />
 
-    <TextView
-        android:id="@+id/btnH"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="14dp"
-        android:paddingTop="7dp"
-        android:paddingRight="14dp"
-        android:paddingBottom="7dp"
-        android:text="h"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="@+id/btnG"
-        app:layout_constraintTop_toTopOf="@+id/btn0" />
+        <TextView
+            android:id="@+id/btn4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="25dp"
+            android:padding="10dp"
+            android:text="4"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/btn7"
+            app:layout_constraintTop_toBottomOf="@+id/btn7" />
 
-    <TextView
-        android:id="@+id/btnSubmit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="14dp"
-        android:paddingTop="7dp"
-        android:paddingRight="14dp"
-        android:paddingBottom="7dp"
-        android:text="Submit"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        tools:layout_editor_absoluteX="298dp"
-        tools:layout_editor_absoluteY="492dp" />
+        <TextView
+            android:id="@+id/btn5"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:padding="10dp"
+            android:text="5"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn4"
+            app:layout_constraintStart_toEndOf="@+id/btn4" />
 
-    <TextView
-        android:id="@+id/btnA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:paddingLeft="14dp"
-        android:paddingTop="7dp"
-        android:paddingRight="14dp"
-        android:paddingBottom="7dp"
-        android:text="a"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn9"
-        app:layout_constraintStart_toEndOf="@+id/btn9" />
+        <TextView
+            android:id="@+id/btn6"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:padding="10dp"
+            android:text="6"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn5"
+            app:layout_constraintStart_toEndOf="@+id/btn5" />
 
-    <TextView
-        android:id="@+id/tvDisplay"
-        android:layout_width="298dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="53dp"
-        android:textAlignment="textEnd"
-        android:textSize="34sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/btnDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="35dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:text="Delete"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/btn0"
+            app:layout_constraintTop_toBottomOf="@+id/btn0" />
 
-    <LinearLayout
-        android:id="@+id/OrderList"
-        android:layout_width="659dp"
-        android:layout_height="547dp"
-        android:layout_marginTop="53dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnG"
-        app:layout_constraintTop_toTopOf="parent"></LinearLayout>
+        <TextView
+            android:id="@+id/tvSumme"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginBottom="4dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:text="Summe:"
+            android:textAlignment="textStart"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnSubmit"
+            app:layout_constraintStart_toStartOf="@+id/scrollView" />
+
+        <TextView
+            android:id="@+id/tvSummeDisplay"
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="60dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:textAlignment="textStart"
+            android:textSize="18sp"
+            app:fontFamily="sans-serif-blackw"
+            app:guidelineUseRtl="false"
+            app:layout_constraintEnd_toEndOf="@+id/scrollView"
+            app:layout_constraintStart_toEndOf="@+id/tvSumme"
+            app:layout_constraintTop_toTopOf="@+id/tvSumme"
+            app:textAllCaps="false" />
+
+        <TextView
+            android:id="@+id/btn9"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:padding="10dp"
+            android:text="9"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn8"
+            app:layout_constraintStart_toEndOf="@+id/btn8" />
+
+        <TextView
+            android:id="@+id/btnB"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:paddingLeft="14dp"
+            android:paddingTop="7dp"
+            android:paddingRight="14dp"
+            android:paddingBottom="7dp"
+            android:text="b"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn6"
+            app:layout_constraintStart_toEndOf="@+id/btn6" />
+
+        <TextView
+            android:id="@+id/btnSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:paddingLeft="14dp"
+            android:paddingTop="7dp"
+            android:paddingRight="14dp"
+            android:paddingBottom="7dp"
+            android:text="Submit"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnDelete"
+            app:layout_constraintStart_toEndOf="@+id/btnDelete" />
+
+        <TextView
+            android:id="@+id/btnA"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:paddingLeft="14dp"
+            android:paddingTop="7dp"
+            android:paddingRight="14dp"
+            android:paddingBottom="7dp"
+            android:text="a"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn9"
+            app:layout_constraintStart_toEndOf="@+id/btn9" />
+
+        <TextView
+            android:id="@+id/btnGroß"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:paddingLeft="14dp"
+            android:paddingTop="7dp"
+            android:paddingRight="14dp"
+            android:paddingBottom="7dp"
+            android:text="Groß"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnA"
+            app:layout_constraintStart_toEndOf="@+id/btnA"
+            app:layout_constraintTop_toTopOf="@+id/btnA" />
+
+        <TextView
+            android:id="@+id/btnBeilage"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:paddingLeft="14dp"
+            android:paddingTop="7dp"
+            android:paddingRight="14dp"
+            android:paddingBottom="7dp"
+            android:text="Beilage"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnB"
+            app:layout_constraintStart_toEndOf="@+id/btnB"
+            app:layout_constraintTop_toTopOf="@+id/btnB" />
+
+        <TextView
+            android:id="@+id/btnSoße"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:paddingLeft="14dp"
+            android:paddingTop="7dp"
+            android:paddingRight="14dp"
+            android:paddingBottom="7dp"
+            android:text="Soße"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnG"
+            app:layout_constraintStart_toEndOf="@+id/btnG"
+            app:layout_constraintTop_toTopOf="@+id/btnG" />
+
+        <TextView
+            android:id="@+id/tvDisplay"
+            android:layout_width="250dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="53dp"
+            android:background="@drawable/border"
+            android:gravity="center"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="350dp"
+            android:layout_height="417dp"
+            android:layout_marginEnd="100dp"
+            android:background="@drawable/border"
+            app:layout_constraintBottom_toBottomOf="@+id/btnH"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvDisplay">
+
+            <LinearLayout
+                android:id="@+id/orderList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="53dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@+id/btnH"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnG"
+                app:layout_constraintTop_toTopOf="parent" />
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
