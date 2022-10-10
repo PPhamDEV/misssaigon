@@ -3,12 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.125" />
+        <entry key="app/src/main/res/drawable/border.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/circle.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/rounded_textview.xml" value="0.104" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.24925551151205422" />
       </map>
     </option>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_16_PREVIEW" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.11" />
+      </ProjectState>
+    </option>
   </component>
 </project>
