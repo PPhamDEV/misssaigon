@@ -2,7 +2,6 @@ package com.qptech.misssaigon;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
@@ -10,7 +9,6 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
-import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -30,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private float sum = 0;
     private List<OrderItem> currentOrderList;
     private List<View> currentOrderListViewItem;
+    private int mulitplicationFactor = 1;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +39,172 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         currentOrderListViewItem = new ArrayList<>();
         menu = initMenu();
         setListener();
+    }
+
+
+
+
+
+    private void displayOrderNumber(String newValue){
+        final TextView tvDisplay = findViewById(R.id.tvDisplay);
+        final String currentDisplayValue = tvDisplay.getText().toString();
+        String newDisplayValue;
+        if(currentDisplayValue.contains("  ")) {
+            String[] parts = currentDisplayValue.split("  ");
+            newDisplayValue = mulitplicationFactor+"x" + "  " +parts[1] + newValue;
+        }else {
+            newDisplayValue = mulitplicationFactor+"x" + "  " +currentDisplayValue + newValue;
+        }
+        tvDisplay.setText(newDisplayValue);
+        tvDisplay.setTypeface(tvDisplay.getTypeface(), Typeface.BOLD);
+    }
+
+    private void displayMultiplication(){
+        final TextView tvDisplay = findViewById(R.id.tvDisplay);
+        final String currentDisplayValue = tvDisplay.getText().toString();
+        String newDisplayValue;
+        if(currentDisplayValue.contains("  ")) {
+            String[] parts = currentDisplayValue.split("  ");
+            newDisplayValue = mulitplicationFactor+"x"+"  "+parts[1];
+        }else {
+            newDisplayValue = mulitplicationFactor+"x"+"  "+currentDisplayValue;
+        }
+        tvDisplay.setText(newDisplayValue);
+        tvDisplay.setTypeface(tvDisplay.getTypeface(), Typeface.BOLD);
+    }
+
+    private void addItemToOrderList(TextView tvDisplay, String value) {
+        for(int i = 0; i<mulitplicationFactor; i++) {
+            String currentValue = value;
+            if(tvDisplay != null && currentValue == null) currentValue = tvDisplay.getText().toString();
+            for (OrderItem orderItem : menu) {
+                final String itemNumber = orderItem.getNumber();
+                if(itemNumber.equals(currentValue)){
+                    final float itemPrice = orderItem.getPrice();
+                    OrderItem orderItemArrayList = new OrderItem(itemNumber, itemPrice);
+                    currentOrderList.add(orderItemArrayList);
+                    LinearLayout linearLayout = (LinearLayout)findViewById(R.id.orderList);
+                    LinearLayout itemWrapper = configureOrderItemTextView(itemNumber, itemPrice);
+                    currentOrderListViewItem.add(itemWrapper);
+                    linearLayout.addView(itemWrapper);
+                    TextView tvSummeDisplay = findViewById(R.id.tvSummeDisplay);
+
+                    sum = sum + itemPrice;
+                    String sumText = String.format("%.2f", sum)+" €";
+                    SpannableString content = new SpannableString(sumText);
+                    content.setSpan(new UnderlineSpan(), 0, sumText.length(), 0);
+                    tvSummeDisplay.setText(content);
+                    tvSummeDisplay.setTypeface(tvDisplay.getTypeface(), Typeface.BOLD);
+                    ScrollView scrollView = findViewById(R.id.scrollView);
+                    scrollView.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            scrollView.fullScroll(View.FOCUS_DOWN);
+                        }
+                    });
+                }
+            }
+            tvDisplay.setText("");
+        }
+
+    }
+
+    private LinearLayout configureOrderItemTextView(String number, float price) {
+        TextView tvNumber = new TextView(this);
+        String itemNumber = number+".";
+        tvNumber.setText(itemNumber);
+        tvNumber.setTextAppearance(getApplicationContext(),R.style.orderItem);
+        TextView tvPrice = new TextView(this);
+        String itemPrice = String.format("%.2f", price)+" €";
+        tvPrice.setText(itemPrice);
+        tvPrice.setTextAppearance(getApplicationContext(),R.style.orderItem);
+        LinearLayout itemWrapper = new LinearLayout(this);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.setMargins(40,0,200,0);
+        tvNumber.setLayoutParams(params);
+        itemWrapper.setOrientation(LinearLayout.HORIZONTAL);
+        itemWrapper.addView(tvNumber);
+        itemWrapper.addView(tvPrice);
+        return itemWrapper;
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onTouch(final View v, final MotionEvent event) {
+        switch (v.getId()) {
+        case R.id.btn0:
+        case R.id.btn1:
+        case R.id.btn2:
+        case R.id.btn3:
+        case R.id.btn4:
+        case R.id.btn5:
+        case R.id.btn6:
+        case R.id.btn7:
+        case R.id.btn8:
+        case R.id.btn9:
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                v.setBackgroundResource(R.drawable.rounded_textview);
+            }
+            else if (event.getAction() == MotionEvent.ACTION_UP) {
+                v.setBackgroundColor(0x00000000);
+            }
+            break;
+        case R.id.btnA:
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                v.setBackgroundColor(Color.parseColor("#80cc0202"));
+            }
+            else if (event.getAction() == MotionEvent.ACTION_UP) {
+                v.setBackgroundColor(Color.parseColor("#80FF0000"));
+            }
+            break;
+        case R.id.btnB:
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                v.setBackgroundColor(Color.parseColor("#80c7645a"));
+            }
+            else if (event.getAction() == MotionEvent.ACTION_UP) {
+                v.setBackgroundColor(Color.parseColor("#80FA8072"));
+            }
+            break;
+        case R.id.btnH:
+        case R.id.btnG:
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                v.setBackgroundColor(Color.parseColor("#80b4c98b"));
+            }
+            else if (event.getAction() == MotionEvent.ACTION_UP) {
+                v.setBackgroundColor(Color.parseColor("#80DAF7A6"));
+            }
+            break;
+        case R.id.btnDone:
+        case R.id.btnDelete:
+        case R.id.btnSubmit:
+        case R.id.btnGroß:
+        case R.id.btnBeilage:
+        case R.id.btnSoße:
+        case R.id.btnGetränk:
+        case R.id.btnGetränkP:
+        case R.id.btnBier:
+        case R.id.btnReis:
+            changeColorMainButtons(v, event);
+            break;
+        case R.id.btnDeleteLast:
+            LinearLayout linearLayout = findViewById(R.id.orderList);
+            int childAmount = linearLayout.getChildCount();
+            if(childAmount>0) {
+
+            }
+        }
+
+
+        return false;
+    }
+
+    private void changeColorMainButtons(final View v, final MotionEvent event){
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            v.setBackgroundColor(Color.parseColor("#80969696"));
+        }
+        else if (event.getAction() == MotionEvent.ACTION_UP) {
+            v.setBackgroundColor(Color.parseColor("#80ababab"));
+        }
     }
 
     private List<OrderItem> initMenu() {
@@ -184,6 +349,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         btnGetränkP.setBackgroundColor(Color.parseColor("#80ababab"));
         TextView btnBier = findViewById(R.id.btnBier);
         btnBier.setBackgroundColor(Color.parseColor("#80ababab"));
+        TextView btnX1 = findViewById(R.id.btn_plus1);
+        TextView btnX2 = findViewById(R.id.btn_minus1);
+
 
         btn0.setOnClickListener(listener);
         btn1.setOnClickListener(listener);
@@ -210,6 +378,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         btnGetränk.setOnClickListener(listener);
         btnGetränkP.setOnClickListener(listener);
         btnBier.setOnClickListener(listener);
+        btnX1.setOnClickListener(listener);
+        btnX2.setOnClickListener(listener);
 
         btn0.setOnTouchListener(this);
         btn1.setOnTouchListener(this);
@@ -236,14 +406,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         btnGetränk.setOnTouchListener(this);
         btnGetränkP.setOnTouchListener(this);
         btnBier.setOnTouchListener(this);
-    }
-
-    private void displayOrderNumber(String newValue){
-        TextView tvDisplay = findViewById(R.id.tvDisplay);
-        String currentDisplayValue = tvDisplay.getText().toString();
-        String newDisplayValue = currentDisplayValue + newValue;
-        tvDisplay.setText(newDisplayValue);
-        tvDisplay.setTypeface(tvDisplay.getTypeface(), Typeface.BOLD);
+        btnX1.setOnTouchListener(this);
+        btnX2.setOnTouchListener(this);
     }
 
     View.OnClickListener listener = v -> {
@@ -346,137 +510,13 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         if(v.getId() == R.id.btnSubmit){
             addItemToOrderList(tvDisplay, null);
         }
+        if(v.getId() == R.id.btn_plus1){
+            this.mulitplicationFactor++;
+            displayMultiplication();
+        }
+        if(v.getId() == R.id.btn_minus1){
+            this.mulitplicationFactor--;
+            displayMultiplication();
+        }
     };
-
-    private void addItemToOrderList(TextView tvDisplay, String value) {
-        String currentValue = value;
-        if(tvDisplay != null && currentValue == null) currentValue = tvDisplay.getText().toString();
-
-        for (OrderItem orderItem : menu) {
-            final String itemNumber = orderItem.getNumber();
-            if(itemNumber.equals(currentValue)){
-                final float itemPrice = orderItem.getPrice();
-                OrderItem orderItemArrayList = new OrderItem(itemNumber, itemPrice);
-                currentOrderList.add(orderItemArrayList);
-                LinearLayout linearLayout = (LinearLayout)findViewById(R.id.orderList);
-                LinearLayout itemWrapper = configureOrderItemTextView(itemNumber, itemPrice);
-                currentOrderListViewItem.add(itemWrapper);
-                linearLayout.addView(itemWrapper);
-                TextView tvSummeDisplay = findViewById(R.id.tvSummeDisplay);
-
-                sum = sum + itemPrice;
-                String sumText = String.format("%.2f", sum)+" €";
-                SpannableString content = new SpannableString(sumText);
-                content.setSpan(new UnderlineSpan(), 0, sumText.length(), 0);
-                tvSummeDisplay.setText(content);
-                tvSummeDisplay.setTypeface(tvDisplay.getTypeface(), Typeface.BOLD);
-                tvDisplay.setText("");
-                ScrollView scrollView = findViewById(R.id.scrollView);
-                scrollView.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        scrollView.fullScroll(View.FOCUS_DOWN);
-                    }
-                });
-            }
-        }
-    }
-
-    private LinearLayout configureOrderItemTextView(String number, float price) {
-        TextView tvNumber = new TextView(this);
-        String itemNumber = number+".";
-        tvNumber.setText(itemNumber);
-        tvNumber.setTextAppearance(getApplicationContext(),R.style.orderItem);
-        TextView tvPrice = new TextView(this);
-        String itemPrice = String.format("%.2f", price)+" €";
-        tvPrice.setText(itemPrice);
-        tvPrice.setTextAppearance(getApplicationContext(),R.style.orderItem);
-        LinearLayout itemWrapper = new LinearLayout(this);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        params.setMargins(40,0,200,0);
-        tvNumber.setLayoutParams(params);
-        itemWrapper.setOrientation(LinearLayout.HORIZONTAL);
-        itemWrapper.addView(tvNumber);
-        itemWrapper.addView(tvPrice);
-        return itemWrapper;
-    }
-
-    @SuppressLint("NonConstantResourceId")
-    @Override
-    public boolean onTouch(final View v, final MotionEvent event) {
-        switch (v.getId()) {
-        case R.id.btn0:
-        case R.id.btn1:
-        case R.id.btn2:
-        case R.id.btn3:
-        case R.id.btn4:
-        case R.id.btn5:
-        case R.id.btn6:
-        case R.id.btn7:
-        case R.id.btn8:
-        case R.id.btn9:
-            if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                v.setBackgroundResource(R.drawable.rounded_textview);
-            }
-            else if (event.getAction() == MotionEvent.ACTION_UP) {
-                v.setBackgroundColor(0x00000000);
-            }
-            break;
-        case R.id.btnA:
-            if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                v.setBackgroundColor(Color.parseColor("#80cc0202"));
-            }
-            else if (event.getAction() == MotionEvent.ACTION_UP) {
-                v.setBackgroundColor(Color.parseColor("#80FF0000"));
-            }
-            break;
-        case R.id.btnB:
-            if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                v.setBackgroundColor(Color.parseColor("#80c7645a"));
-            }
-            else if (event.getAction() == MotionEvent.ACTION_UP) {
-                v.setBackgroundColor(Color.parseColor("#80FA8072"));
-            }
-            break;
-        case R.id.btnH:
-        case R.id.btnG:
-            if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                v.setBackgroundColor(Color.parseColor("#80b4c98b"));
-            }
-            else if (event.getAction() == MotionEvent.ACTION_UP) {
-                v.setBackgroundColor(Color.parseColor("#80DAF7A6"));
-            }
-            break;
-        case R.id.btnDone:
-        case R.id.btnDelete:
-        case R.id.btnSubmit:
-        case R.id.btnGroß:
-        case R.id.btnBeilage:
-        case R.id.btnSoße:
-        case R.id.btnGetränk:
-        case R.id.btnGetränkP:
-        case R.id.btnBier:
-        case R.id.btnReis:
-            changeColorMainButtons(v, event);
-            break;
-        case R.id.btnDeleteLast:
-            LinearLayout linearLayout = findViewById(R.id.orderList);
-            int childAmount = linearLayout.getChildCount();
-            if(childAmount>0) {
-
-            }
-        }
-
-
-        return false;
-    }
-
-    private void changeColorMainButtons(final View v, final MotionEvent event){
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            v.setBackgroundColor(Color.parseColor("#80969696"));
-        }
-        else if (event.getAction() == MotionEvent.ACTION_UP) {
-            v.setBackgroundColor(Color.parseColor("#80ababab"));
-        }
-    }
 }
