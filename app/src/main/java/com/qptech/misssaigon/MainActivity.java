@@ -223,7 +223,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         menu.add(new OrderItem("1", 3.6F));
         menu.add(new OrderItem("2", 2.8F));
         menu.add(new OrderItem("3", 4.2F));
-        menu.add(new OrderItem("4", 4.8F));
+        menu.add(new OrderItem("4", 5.1F));
 
         menu.add(new OrderItem("S1", 4.8F));
         menu.add(new OrderItem("S3", 7.8F));
