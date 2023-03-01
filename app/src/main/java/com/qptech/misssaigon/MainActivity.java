@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         currentOrderListViewItem = new ArrayList<>();
         menu = initMenu();
         setListener();
+        TextView tvDisplay = findViewById(R.id.tvDisplay);
+        tvDisplay.setText("1x");
     }
 
 
@@ -48,12 +50,12 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private void displayOrderNumber(String newValue){
         final TextView tvDisplay = findViewById(R.id.tvDisplay);
         final String currentDisplayValue = tvDisplay.getText().toString();
-        String newDisplayValue;
+        String newDisplayValue="";
         if(currentDisplayValue.contains("  ")) {
             String[] parts = currentDisplayValue.split("  ");
-            newDisplayValue = mulitplicationFactor+"x" + "  " +parts[1] + newValue;
+            newDisplayValue = mulitplicationFactor+"x"+"  "+parts[1]+newValue;
         }else {
-            newDisplayValue = mulitplicationFactor+"x" + "  " +currentDisplayValue + newValue;
+            newDisplayValue = mulitplicationFactor+"x"+"  "+newValue;
         }
         tvDisplay.setText(newDisplayValue);
         tvDisplay.setTypeface(tvDisplay.getTypeface(), Typeface.BOLD);
@@ -62,13 +64,22 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private void displayMultiplication(){
         final TextView tvDisplay = findViewById(R.id.tvDisplay);
         final String currentDisplayValue = tvDisplay.getText().toString();
-        String newDisplayValue;
+        String newDisplayValue="";
+
+        if(currentDisplayValue.length() == 0) newDisplayValue = mulitplicationFactor+"x";
+        else if(currentDisplayValue.contains("  ")) {
+            String[] parts = currentDisplayValue.split("  ");
+            newDisplayValue = mulitplicationFactor+"x"+"  "+parts[1];
+        }else {
+            newDisplayValue = mulitplicationFactor+"x";
+        }
+/*
         if(currentDisplayValue.contains("  ")) {
             String[] parts = currentDisplayValue.split("  ");
             newDisplayValue = mulitplicationFactor+"x"+"  "+parts[1];
         }else {
             newDisplayValue = mulitplicationFactor+"x"+"  "+currentDisplayValue;
-        }
+        }*/
         tvDisplay.setText(newDisplayValue);
         tvDisplay.setTypeface(tvDisplay.getTypeface(), Typeface.BOLD);
     }
@@ -76,7 +87,11 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private void addItemToOrderList(TextView tvDisplay, String value) {
         for(int i = 0; i<mulitplicationFactor; i++) {
             String currentValue = value;
-            if(tvDisplay != null && currentValue == null) currentValue = tvDisplay.getText().toString();
+            if(tvDisplay != null && currentValue == null) {
+                currentValue = tvDisplay.getText().toString();
+                String[] parts = currentValue.split("  ");
+                currentValue = parts[1];
+            }
             for (OrderItem orderItem : menu) {
                 final String itemNumber = orderItem.getNumber();
                 if(itemNumber.equals(currentValue)){
@@ -104,9 +119,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                     });
                 }
             }
-            tvDisplay.setText("");
         }
-
+        tvDisplay.setText("1x");
+        this.mulitplicationFactor = 1;
     }
 
     private LinearLayout configureOrderItemTextView(String number, float price) {
@@ -184,14 +199,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         case R.id.btnGetränkP:
         case R.id.btnBier:
         case R.id.btnReis:
+        case R.id.btnDeleteLast:
             changeColorMainButtons(v, event);
             break;
-        case R.id.btnDeleteLast:
-            LinearLayout linearLayout = findViewById(R.id.orderList);
-            int childAmount = linearLayout.getChildCount();
-            if(childAmount>0) {
 
-            }
         }
 
 
@@ -300,9 +311,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         menu.add(new OrderItem("Groß", 1.8F));
         menu.add(new OrderItem("Beilage", 4.6F));
         menu.add(new OrderItem("Soße", 1.2F));
-        menu.add(new OrderItem("Reis", 3.2F));
+        menu.add(new OrderItem("Reis / statt Reis", 3.2F));
         menu.add(new OrderItem("Getränk", 1.8F));
-        menu.add(new OrderItem("GetränkP", 1.95F));
+        menu.add(new OrderItem("Getränk mit Pfand", 1.95F));
         menu.add(new OrderItem("Bier", 1.9F));
         return menu;
     }
@@ -455,33 +466,42 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             displayOrderNumber("h");
         }
         if(v.getId() == R.id.btnGroß){
-            addItemToOrderList(tvDisplay, "Groß");
+            tvDisplay.setText(this.mulitplicationFactor+"x");
+            displayOrderNumber("Groß");
+//            addItemToOrderList(tvDisplay, "Groß");
         }
         if(v.getId() == R.id.btnBeilage){
-            addItemToOrderList(tvDisplay, "Beilage");
+//            addItemToOrderList(tvDisplay, "Beilage");
+            tvDisplay.setText(this.mulitplicationFactor+"x");
+            displayOrderNumber("Beilage");
         }
         if(v.getId() == R.id.btnSoße){
-            addItemToOrderList(tvDisplay, "Soße");
+//            addItemToOrderList(tvDisplay, "Soße");
+            tvDisplay.setText(this.mulitplicationFactor+"x");
+            displayOrderNumber("Soße");
         }
         if(v.getId() == R.id.btnReis){
-            addItemToOrderList(tvDisplay, "Reis");
+//            addItemToOrderList(tvDisplay, "Reis");
+            tvDisplay.setText(this.mulitplicationFactor+"x");
+            displayOrderNumber("Reis / statt Reis");
         }
         if(v.getId() == R.id.btnGetränk){
-            addItemToOrderList(tvDisplay, "Getränk");
+//            addItemToOrderList(tvDisplay, "Getränk");
+            tvDisplay.setText(this.mulitplicationFactor+"x");
+            displayOrderNumber("Getränk");
         }
         if(v.getId() == R.id.btnGetränkP){
-            addItemToOrderList(tvDisplay, "GetränkP");
+//            addItemToOrderList(tvDisplay, "Getränk mit Pfand");
+            tvDisplay.setText(this.mulitplicationFactor+"x");
+            displayOrderNumber("Getränk mit Pfand");
         }
         if(v.getId() == R.id.btnBier){
-            addItemToOrderList(tvDisplay, "Bier");
+//            addItemToOrderList(tvDisplay, "Bier");
+            tvDisplay.setText(this.mulitplicationFactor+"x");
+            displayOrderNumber("Bier");
         }
         if(v.getId() == R.id.btnDelete){
-            String currentDisplayValue = tvDisplay.getText().toString();
-            if(currentDisplayValue.length()>0) {
-                StringBuffer sb = new StringBuffer(currentDisplayValue);
-                sb.deleteCharAt(sb.length()-1);
-                tvDisplay.setText(sb);
-            }
+            tvDisplay.setText(this.mulitplicationFactor+"x");
         }
         if(v.getId() == R.id.btnDeleteLast){
             LinearLayout linearLayout = (LinearLayout)findViewById(R.id.orderList);
@@ -509,12 +529,14 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         }
         if(v.getId() == R.id.btnSubmit){
             addItemToOrderList(tvDisplay, null);
+            tvDisplay.setText("1x");
         }
         if(v.getId() == R.id.btn_plus1){
             this.mulitplicationFactor++;
             displayMultiplication();
         }
         if(v.getId() == R.id.btn_minus1){
+            if(this.mulitplicationFactor == 1) return;
             this.mulitplicationFactor--;
             displayMultiplication();
         }
