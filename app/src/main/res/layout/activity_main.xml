@@ -23,9 +23,9 @@
             android:paddingTop="7dp"
             android:paddingRight="14dp"
             android:paddingBottom="7dp"
-            android:text="Reis"
+            android:text="Reis / statt Reis"
             android:textAlignment="center"
-            android:textSize="16sp"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/btnH"
             app:layout_constraintEnd_toEndOf="@+id/btnSoße"
             app:layout_constraintStart_toStartOf="@+id/btnSoße"
@@ -130,31 +130,31 @@
             android:textAlignment="center"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/btnSubmit"
-            app:layout_constraintStart_toStartOf="@+id/btnH" />
+            app:layout_constraintEnd_toStartOf="@+id/btnGetränkP"
+            app:layout_constraintStart_toEndOf="@+id/btnSubmit" />
 
         <TextView
             android:id="@+id/btnBier"
             android:layout_width="55dp"
             android:layout_height="50dp"
-            android:layout_marginStart="29dp"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
             android:text="B"
             android:textAlignment="center"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/btnGetränkP"
+            app:layout_constraintEnd_toEndOf="@+id/btnReis"
             app:layout_constraintTop_toTopOf="@+id/btnGetränkP" />
 
         <TextView
             android:id="@+id/btnGetränkP"
             android:layout_width="55dp"
             android:layout_height="50dp"
-            android:layout_marginStart="28dp"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
             android:text="G+P"
             android:textAlignment="center"
             android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/btnBier"
             app:layout_constraintStart_toEndOf="@+id/btnGetränk"
             app:layout_constraintTop_toTopOf="@+id/btnGetränk" />
 
@@ -415,7 +415,7 @@
             android:layout_height="45dp"
             android:text="+1"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="@+id/tvSummeDisplay"
+            app:layout_constraintEnd_toEndOf="@+id/btnSubmit"
             app:layout_constraintStart_toEndOf="@+id/btn_minus1"
             app:layout_constraintTop_toTopOf="@+id/btn0" />
 

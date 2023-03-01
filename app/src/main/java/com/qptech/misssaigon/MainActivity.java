@@ -39,21 +39,19 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         currentOrderListViewItem = new ArrayList<>();
         menu = initMenu();
         setListener();
+        TextView tvDisplay = findViewById(R.id.tvDisplay);
+        tvDisplay.setText("1x");
     }
-
-
-
-
 
     private void displayOrderNumber(String newValue){
         final TextView tvDisplay = findViewById(R.id.tvDisplay);
         final String currentDisplayValue = tvDisplay.getText().toString();
-        String newDisplayValue;
+        String newDisplayValue="";
         if(currentDisplayValue.contains("  ")) {
             String[] parts = currentDisplayValue.split("  ");
-            newDisplayValue = mulitplicationFactor+"x" + "  " +parts[1] + newValue;
+            newDisplayValue = mulitplicationFactor+"x"+"  "+parts[1]+newValue;
         }else {
-            newDisplayValue = mulitplicationFactor+"x" + "  " +currentDisplayValue + newValue;
+            newDisplayValue = mulitplicationFactor+"x"+"  "+newValue;
         }
         tvDisplay.setText(newDisplayValue);
         tvDisplay.setTypeface(tvDisplay.getTypeface(), Typeface.BOLD);
@@ -62,13 +60,22 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private void displayMultiplication(){
         final TextView tvDisplay = findViewById(R.id.tvDisplay);
         final String currentDisplayValue = tvDisplay.getText().toString();
-        String newDisplayValue;
+        String newDisplayValue="";
+
+        if(currentDisplayValue.length() == 0) newDisplayValue = mulitplicationFactor+"x";
+        else if(currentDisplayValue.contains("  ")) {
+            String[] parts = currentDisplayValue.split("  ");
+            newDisplayValue = mulitplicationFactor+"x"+"  "+parts[1];
+        }else {
+            newDisplayValue = mulitplicationFactor+"x";
+        }
+/*
         if(currentDisplayValue.contains("  ")) {
             String[] parts = currentDisplayValue.split("  ");
             newDisplayValue = mulitplicationFactor+"x"+"  "+parts[1];
         }else {
             newDisplayValue = mulitplicationFactor+"x"+"  "+currentDisplayValue;
-        }
+        }*/
         tvDisplay.setText(newDisplayValue);
         tvDisplay.setTypeface(tvDisplay.getTypeface(), Typeface.BOLD);
     }
@@ -76,7 +83,11 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private void addItemToOrderList(TextView tvDisplay, String value) {
         for(int i = 0; i<mulitplicationFactor; i++) {
             String currentValue = value;
-            if(tvDisplay != null && currentValue == null) currentValue = tvDisplay.getText().toString();
+            if(tvDisplay != null && currentValue == null) {
+                currentValue = tvDisplay.getText().toString();
+                String[] parts = currentValue.split("  ");
+                currentValue = parts[1];
+            }
             for (OrderItem orderItem : menu) {
                 final String itemNumber = orderItem.getNumber();
                 if(itemNumber.equals(currentValue)){
@@ -104,9 +115,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                     });
                 }
             }
-            tvDisplay.setText("");
         }
-
+        tvDisplay.setText("1x");
+        this.mulitplicationFactor = 1;
     }
 
     private LinearLayout configureOrderItemTextView(String number, float price) {
@@ -184,14 +195,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         case R.id.btnGetränkP:
         case R.id.btnBier:
         case R.id.btnReis:
+        case R.id.btnDeleteLast:
             changeColorMainButtons(v, event);
             break;
-        case R.id.btnDeleteLast:
-            LinearLayout linearLayout = findViewById(R.id.orderList);
-            int childAmount = linearLayout.getChildCount();
-            if(childAmount>0) {
 
-            }
         }
 
 
@@ -210,100 +217,97 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private List<OrderItem> initMenu() {
         List<OrderItem> menu = new ArrayList<>();
         menu.add(new OrderItem("1", 3.6F));
-        menu.add(new OrderItem("2", 2.7F));
-        menu.add(new OrderItem("3", 3.9F));
-        menu.add(new OrderItem("4", 4.8F));
+        menu.add(new OrderItem("2", 2.8F));
+        menu.add(new OrderItem("3", 4.2F));
+        menu.add(new OrderItem("4", 5.1F));
 
-        menu.add(new OrderItem("S1", 4.8F));
-        menu.add(new OrderItem("S3", 7.8F));
+        menu.add(new OrderItem("6", 3.9F));
+        menu.add(new OrderItem("7", 5.1F));
+        menu.add(new OrderItem("8", 5.1F));
+        menu.add(new OrderItem("8g", 5.8F));
+        menu.add(new OrderItem("8h", 5.8F));
 
-        menu.add(new OrderItem("6", 3.6F));
-        menu.add(new OrderItem("7", 4.8F));
-        menu.add(new OrderItem("8", 4.8F));
-        menu.add(new OrderItem("8g", 5.5F));
-        menu.add(new OrderItem("8h", 5.5F));
+        menu.add(new OrderItem("9", 7.7F));
+        menu.add(new OrderItem("10", 7.9F));
+        menu.add(new OrderItem("11", 7.3F));
+        menu.add(new OrderItem("12", 7.7F));
+        menu.add(new OrderItem("13", 7.3F));
+        menu.add(new OrderItem("14", 7.9F));
+        menu.add(new OrderItem("15", 7.9F));
+        menu.add(new OrderItem("15a", 8.3F));
+        menu.add(new OrderItem("19", 7.9F));
 
-        menu.add(new OrderItem("9", 7.2F));
-        menu.add(new OrderItem("10", 7.5F));
-        menu.add(new OrderItem("11", 6.9F));
-        menu.add(new OrderItem("12", 7.2F));
-        menu.add(new OrderItem("13", 6.9F));
-        menu.add(new OrderItem("14", 7.2F));
-        menu.add(new OrderItem("15", 7.5F));
-        menu.add(new OrderItem("15a", 7.8F));
-        menu.add(new OrderItem("19", 7.5F));
+        menu.add(new OrderItem("20", 8.3F));
+        menu.add(new OrderItem("20g", 11.4F));
+        menu.add(new OrderItem("22", 10.5F));
+        menu.add(new OrderItem("23", 11.0F));
+        menu.add(new OrderItem("24", 9.7F));
+        menu.add(new OrderItem("25", 12.5F));
+        menu.add(new OrderItem("26", 9.7F));
 
-        menu.add(new OrderItem("20", 7.8F));
-        menu.add(new OrderItem("20g", 10.9F));
-        menu.add(new OrderItem("22", 10.0F));
-        menu.add(new OrderItem("23", 10.5F));
-        menu.add(new OrderItem("24", 9.2F));
-        menu.add(new OrderItem("25", 11.8F));
-        menu.add(new OrderItem("26", 9.2F));
+        menu.add(new OrderItem("20b", 8.8F));
+        menu.add(new OrderItem("22b", 11.0F));
+        menu.add(new OrderItem("23b", 11.5F));
+        menu.add(new OrderItem("24b", 10.2F));
+        menu.add(new OrderItem("25b", 12.80F));
 
-        menu.add(new OrderItem("20b", 8.3F));
-        menu.add(new OrderItem("22b", 10.5F));
-        menu.add(new OrderItem("23b", 11.0F));
-        menu.add(new OrderItem("24b", 9.7F));
-        menu.add(new OrderItem("25b", 12.10F));
+        menu.add(new OrderItem("30", 8.3F));
+        menu.add(new OrderItem("30g", 11.4F));
+        menu.add(new OrderItem("32", 10.5F));
+        menu.add(new OrderItem("33", 11.0F));
+        menu.add(new OrderItem("34", 9.7F));
+        menu.add(new OrderItem("35", 12.5F));
+        menu.add(new OrderItem("36", 9.7F));
 
-        menu.add(new OrderItem("30", 7.8F));
-        menu.add(new OrderItem("30g", 10.9F));
-        menu.add(new OrderItem("32", 10.0F));
-        menu.add(new OrderItem("33", 10.5F));
-        menu.add(new OrderItem("34", 9.2F));
-        menu.add(new OrderItem("35", 11.8F));
-        menu.add(new OrderItem("36", 9.2F));
+        menu.add(new OrderItem("40", 9.7F));
+        menu.add(new OrderItem("41", 9.9F));
+        menu.add(new OrderItem("42", 9.9F));
+        menu.add(new OrderItem("42a", 10.1F));
+        menu.add(new OrderItem("43", 8.7F));
+        menu.add(new OrderItem("43b", 11.9F));
+        menu.add(new OrderItem("44", 8.7F));
+        menu.add(new OrderItem("44b", 11.9F));
+        menu.add(new OrderItem("46", 9.9F));
+        menu.add(new OrderItem("47", 9.7F));
+        menu.add(new OrderItem("49", 9.9F));
 
-        menu.add(new OrderItem("40", 9.2F));
-        menu.add(new OrderItem("41", 9.4F));
-        menu.add(new OrderItem("42", 9.4F));
-        menu.add(new OrderItem("42a", 9.6F));
-        menu.add(new OrderItem("43", 8.2F));
-        menu.add(new OrderItem("43b", 11.4F));
-        menu.add(new OrderItem("44", 8.2F));
-        menu.add(new OrderItem("44b", 11.4F));
-        menu.add(new OrderItem("46", 9.2F));
-        menu.add(new OrderItem("47", 9.2F));
-        menu.add(new OrderItem("49", 9.4F));
-
-        menu.add(new OrderItem("60", 12.4F));
-        menu.add(new OrderItem("61", 12.6F));
-        menu.add(new OrderItem("62", 10.0F));
-        menu.add(new OrderItem("62b", 12.4F));
-        menu.add(new OrderItem("63", 10.0F));
-        menu.add(new OrderItem("63b", 12.4F));
-        menu.add(new OrderItem("68", 12.6F));
-        menu.add(new OrderItem("68a", 12.8F));
-        menu.add(new OrderItem("69", 12.6F))
+        menu.add(new OrderItem("60", 13.1F));
+        menu.add(new OrderItem("61", 13.3F));
+        menu.add(new OrderItem("62", 10.3F));
+        menu.add(new OrderItem("62b", 13.3F));
+        menu.add(new OrderItem("63", 10.3F));
+        menu.add(new OrderItem("63b", 13.3F));
+        menu.add(new OrderItem("68", 13.3F));
+        menu.add(new OrderItem("68a", 13.5F));
+        menu.add(new OrderItem("69", 13.3F))
         ;
-        menu.add(new OrderItem("64", 10.4F));
-        menu.add(new OrderItem("65", 10.4F));
-        menu.add(new OrderItem("66", 10.4F));
-        menu.add(new OrderItem("67", 10.4F));
+        menu.add(new OrderItem("64", 10.9F));
+        menu.add(new OrderItem("65", 10.9F));
+        menu.add(new OrderItem("66", 10.9F));
+        menu.add(new OrderItem("67", 10.9F));
 
-        menu.add(new OrderItem("70", 11.0F));
-        menu.add(new OrderItem("71", 11.2F));
-        menu.add(new OrderItem("72", 11.2F));
-        menu.add(new OrderItem("72a", 11.4F));
-        menu.add(new OrderItem("76", 11.0F));
-        menu.add(new OrderItem("79", 11.2F));
+        menu.add(new OrderItem("70", 11.6F));
+        menu.add(new OrderItem("71", 11.8F));
+        menu.add(new OrderItem("72", 11.8F));
+        menu.add(new OrderItem("72a", 12.0F));
+        menu.add(new OrderItem("76", 11.8F));
+        menu.add(new OrderItem("79", 11.8F));
 
-        menu.add(new OrderItem("80", 10.2F));
-        menu.add(new OrderItem("81", 10.4F));
-        menu.add(new OrderItem("82", 10.4F));
-        menu.add(new OrderItem("82a", 10.7F));
-        menu.add(new OrderItem("86", 10.2F));
-        menu.add(new OrderItem("87", 10.2F));
-        menu.add(new OrderItem("89", 10.4F));
+        menu.add(new OrderItem("80", 10.7F));
+        menu.add(new OrderItem("81", 10.9F));
+        menu.add(new OrderItem("82", 10.9F));
+        menu.add(new OrderItem("82a", 11.2F));
+        menu.add(new OrderItem("86", 10.9F));
+        menu.add(new OrderItem("87", 10.9F));
+        menu.add(new OrderItem("89", 10.9F));
 
-        menu.add(new OrderItem("Groß", 1.8F));
-        menu.add(new OrderItem("Beilage", 4.6F));
-        menu.add(new OrderItem("Soße", 1.2F));
-        menu.add(new OrderItem("Reis", 3.2F));
-        menu.add(new OrderItem("Getränk", 1.8F));
-        menu.add(new OrderItem("GetränkP", 1.95F));
-        menu.add(new OrderItem("Bier", 1.9F));
+        menu.add(new OrderItem("Groß", 1.9F));
+        menu.add(new OrderItem("Beilage", 4.9F));
+        menu.add(new OrderItem("Soße", 1.3F));
+        menu.add(new OrderItem("Reis / statt Reis", 3.4F));
+        menu.add(new OrderItem("Getränk", 1.9F));
+        menu.add(new OrderItem("Getränk mit Pfand", 2.05F));
+        menu.add(new OrderItem("Bier", 2.0F));
         return menu;
     }
 
@@ -455,33 +459,42 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             displayOrderNumber("h");
         }
         if(v.getId() == R.id.btnGroß){
-            addItemToOrderList(tvDisplay, "Groß");
+            tvDisplay.setText(this.mulitplicationFactor+"x");
+            displayOrderNumber("Groß");
+//            addItemToOrderList(tvDisplay, "Groß");
         }
         if(v.getId() == R.id.btnBeilage){
-            addItemToOrderList(tvDisplay, "Beilage");
+//            addItemToOrderList(tvDisplay, "Beilage");
+            tvDisplay.setText(this.mulitplicationFactor+"x");
+            displayOrderNumber("Beilage");
         }
         if(v.getId() == R.id.btnSoße){
-            addItemToOrderList(tvDisplay, "Soße");
+//            addItemToOrderList(tvDisplay, "Soße");
+            tvDisplay.setText(this.mulitplicationFactor+"x");
+            displayOrderNumber("Soße");
         }
         if(v.getId() == R.id.btnReis){
-            addItemToOrderList(tvDisplay, "Reis");
+//            addItemToOrderList(tvDisplay, "Reis");
+            tvDisplay.setText(this.mulitplicationFactor+"x");
+            displayOrderNumber("Reis / statt Reis");
         }
         if(v.getId() == R.id.btnGetränk){
-            addItemToOrderList(tvDisplay, "Getränk");
+//            addItemToOrderList(tvDisplay, "Getränk");
+            tvDisplay.setText(this.mulitplicationFactor+"x");
+            displayOrderNumber("Getränk");
         }
         if(v.getId() == R.id.btnGetränkP){
-            addItemToOrderList(tvDisplay, "GetränkP");
+//            addItemToOrderList(tvDisplay, "Getränk mit Pfand");
+            tvDisplay.setText(this.mulitplicationFactor+"x");
+            displayOrderNumber("Getränk mit Pfand");
         }
         if(v.getId() == R.id.btnBier){
-            addItemToOrderList(tvDisplay, "Bier");
+//            addItemToOrderList(tvDisplay, "Bier");
+            tvDisplay.setText(this.mulitplicationFactor+"x");
+            displayOrderNumber("Bier");
         }
         if(v.getId() == R.id.btnDelete){
-            String currentDisplayValue = tvDisplay.getText().toString();
-            if(currentDisplayValue.length()>0) {
-                StringBuffer sb = new StringBuffer(currentDisplayValue);
-                sb.deleteCharAt(sb.length()-1);
-                tvDisplay.setText(sb);
-            }
+            tvDisplay.setText(this.mulitplicationFactor+"x");
         }
         if(v.getId() == R.id.btnDeleteLast){
             LinearLayout linearLayout = (LinearLayout)findViewById(R.id.orderList);
@@ -509,12 +522,14 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         }
         if(v.getId() == R.id.btnSubmit){
             addItemToOrderList(tvDisplay, null);
+            tvDisplay.setText("1x");
         }
         if(v.getId() == R.id.btn_plus1){
             this.mulitplicationFactor++;
             displayMultiplication();
         }
         if(v.getId() == R.id.btn_minus1){
+            if(this.mulitplicationFactor == 1) return;
             this.mulitplicationFactor--;
             displayMultiplication();
         }
