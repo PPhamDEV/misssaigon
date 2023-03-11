@@ -315,7 +315,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         menu.add(new OrderItem("Reis / statt Reis", 3.4F));
         menu.add(new OrderItem("Getränk", 1.9F));
         menu.add(new OrderItem("Getränk mit Pfand", 2.05F));
-        menu.add(new OrderItem("Bier", 2.0F));
+        menu.add(new OrderItem("Bier mit Pfand", 2.0F));
         return menu;
     }
 
@@ -485,7 +485,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             addItemToOrderList(tvDisplay, "Getränk mit Pfand");
         }
         if(v.getId() == R.id.btnBier){
-            addItemToOrderList(tvDisplay, "Bier");
+            addItemToOrderList(tvDisplay, "Bier mit Pfand");
         }
         if(v.getId() == R.id.btnDelete){
             tvDisplay.setText(this.mulitplicationFactor+"x");
