@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             String currentValue = value;
             if(tvDisplay != null && currentValue == null) {
                 currentValue = tvDisplay.getText().toString();
+                if(!currentValue.contains("  ")) return;
                 String[] parts = currentValue.split("  ");
                 currentValue = parts[1];
             }
