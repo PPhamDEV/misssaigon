@@ -110,7 +110,7 @@
         <TextView
             android:id="@+id/btnDone"
             android:layout_width="113dp"
-            android:layout_height="54dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
@@ -131,7 +131,7 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@+id/btnGetränkP"
             app:layout_constraintStart_toEndOf="@+id/btnSubmit"
-            app:layout_constraintTop_toTopOf="@+id/btnDelete" />
+            app:layout_constraintTop_toTopOf="@+id/btn_plus1" />
 
         <TextView
             android:id="@+id/btnBier"
@@ -231,29 +231,29 @@
 
         <TextView
             android:id="@+id/btnDelete"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginStart="20dp"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
-            android:text="Delete"
+            android:text="-"
             android:textAlignment="center"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/btn0"
-            app:layout_constraintTop_toBottomOf="@+id/btn0" />
+            app:layout_constraintStart_toEndOf="@+id/tvDisplay"
+            app:layout_constraintTop_toTopOf="@+id/tvDisplay" />
 
         <TextView
             android:id="@+id/tvSumme"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginTop="10dp"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
             android:text="Summe:"
             android:textAlignment="textStart"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/btnSubmit"
-            app:layout_constraintStart_toStartOf="@+id/scrollView" />
+            app:layout_constraintStart_toStartOf="@+id/scrollView"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView" />
 
         <TextView
             android:id="@+id/tvSummeDisplay"
@@ -411,11 +411,12 @@
             android:id="@+id/btn_plus1"
             android:layout_width="47dp"
             android:layout_height="45dp"
+            android:layout_marginTop="10dp"
             android:text="+1"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="@+id/btnSubmit"
             app:layout_constraintStart_toEndOf="@+id/btn_minus1"
-            app:layout_constraintTop_toTopOf="@+id/btnDelete" />
+            app:layout_constraintTop_toBottomOf="@+id/btnSubmit" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/btn_minus1"
