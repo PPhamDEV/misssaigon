@@ -186,9 +186,16 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 v.setBackgroundColor(Color.parseColor("#80DAF7A6"));
             }
             break;
+        case R.id.btnSubmit:
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                v.setBackgroundColor(Color.parseColor("#3a873a"));
+            }
+            else if (event.getAction() == MotionEvent.ACTION_UP) {
+                v.setBackgroundColor(Color.parseColor("#46a646"));
+            }
+            break;
         case R.id.btnDone:
         case R.id.btnDelete:
-        case R.id.btnSubmit:
         case R.id.btnGroß:
         case R.id.btnBeilage:
         case R.id.btnSoße:
@@ -337,7 +344,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         TextView btnDone = findViewById(R.id.btnDone);
         btnDone.setBackgroundColor(Color.parseColor("#80ababab"));
         TextView btnSumbit = findViewById(R.id.btnSubmit);
-        btnSumbit.setBackgroundColor(Color.parseColor("#80ababab"));
+        btnSumbit.setBackgroundColor(Color.parseColor("#46a646"));
         TextView btnGross = findViewById(R.id.btnGroß);
         btnGross.setBackgroundColor(Color.parseColor("#80ababab"));
         TextView btnBeilage = findViewById(R.id.btnBeilage);
@@ -460,39 +467,25 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             displayOrderNumber("h");
         }
         if(v.getId() == R.id.btnGroß){
-            tvDisplay.setText(this.mulitplicationFactor+"x");
-            displayOrderNumber("Groß");
-//            addItemToOrderList(tvDisplay, "Groß");
+            addItemToOrderList(tvDisplay, "Groß");
         }
         if(v.getId() == R.id.btnBeilage){
-//            addItemToOrderList(tvDisplay, "Beilage");
-            tvDisplay.setText(this.mulitplicationFactor+"x");
-            displayOrderNumber("Beilage");
+            addItemToOrderList(tvDisplay, "Beilage");
         }
         if(v.getId() == R.id.btnSoße){
-//            addItemToOrderList(tvDisplay, "Soße");
-            tvDisplay.setText(this.mulitplicationFactor+"x");
-            displayOrderNumber("Soße");
+            addItemToOrderList(tvDisplay, "Soße");
         }
         if(v.getId() == R.id.btnReis){
-//            addItemToOrderList(tvDisplay, "Reis");
-            tvDisplay.setText(this.mulitplicationFactor+"x");
-            displayOrderNumber("Reis / statt Reis");
+            addItemToOrderList(tvDisplay, "Reis / statt Reis");
         }
         if(v.getId() == R.id.btnGetränk){
-//            addItemToOrderList(tvDisplay, "Getränk");
-            tvDisplay.setText(this.mulitplicationFactor+"x");
-            displayOrderNumber("Getränk");
+            addItemToOrderList(tvDisplay, "Getränk");
         }
         if(v.getId() == R.id.btnGetränkP){
-//            addItemToOrderList(tvDisplay, "Getränk mit Pfand");
-            tvDisplay.setText(this.mulitplicationFactor+"x");
-            displayOrderNumber("Getränk mit Pfand");
+            addItemToOrderList(tvDisplay, "Getränk mit Pfand");
         }
         if(v.getId() == R.id.btnBier){
-//            addItemToOrderList(tvDisplay, "Bier");
-            tvDisplay.setText(this.mulitplicationFactor+"x");
-            displayOrderNumber("Bier");
+            addItemToOrderList(tvDisplay, "Bier");
         }
         if(v.getId() == R.id.btnDelete){
             tvDisplay.setText(this.mulitplicationFactor+"x");

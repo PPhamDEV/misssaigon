@@ -12,8 +12,8 @@
         android:id="@+id/wrapper"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="71dp"
-        tools:layout_editor_absoluteY="63dp">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="88dp">
 
         <TextView
             android:id="@+id/btnReis"
@@ -109,12 +109,12 @@
 
         <TextView
             android:id="@+id/btnDone"
-            android:layout_width="wrap_content"
-            android:layout_height="55dp"
+            android:layout_width="113dp"
+            android:layout_height="54dp"
             android:layout_marginEnd="20dp"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
-            android:text="Done"
+            android:text="Lösche Liste"
             android:textAlignment="center"
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@+id/scrollView"
@@ -129,9 +129,9 @@
             android:text="G"
             android:textAlignment="center"
             android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/btnSubmit"
             app:layout_constraintEnd_toStartOf="@+id/btnGetränkP"
-            app:layout_constraintStart_toEndOf="@+id/btnSubmit" />
+            app:layout_constraintStart_toEndOf="@+id/btnSubmit"
+            app:layout_constraintTop_toTopOf="@+id/btnDelete" />
 
         <TextView
             android:id="@+id/btnBier"
@@ -139,7 +139,7 @@
             android:layout_height="50dp"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
-            android:text="B"
+            android:text="B+P"
             android:textAlignment="center"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/btnReis"
@@ -166,10 +166,8 @@
             android:gravity="center"
             android:text="-"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/tvDisplay"
-            app:layout_constraintStart_toEndOf="@+id/tvDisplay"
-            app:layout_constraintTop_toTopOf="@+id/tvDisplay"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintStart_toEndOf="@+id/scrollView"
+            app:layout_constraintTop_toTopOf="@+id/scrollView" />
 
         <TextView
             android:id="@+id/btn7"
@@ -302,13 +300,13 @@
             android:id="@+id/btnSubmit"
             android:layout_width="136dp"
             android:layout_height="70dp"
-            android:text="Submit"
             android:gravity="center"
+            android:text="Eingabe"
             android:textAlignment="center"
             android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/btnDelete"
             app:layout_constraintEnd_toStartOf="@+id/btnH"
-            app:layout_constraintStart_toEndOf="@+id/btn0" />
+            app:layout_constraintStart_toEndOf="@+id/btn0"
+            app:layout_constraintTop_toTopOf="@+id/btn0" />
 
         <TextView
             android:id="@+id/btnA"
@@ -417,7 +415,7 @@
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="@+id/btnSubmit"
             app:layout_constraintStart_toEndOf="@+id/btn_minus1"
-            app:layout_constraintTop_toTopOf="@+id/btn0" />
+            app:layout_constraintTop_toTopOf="@+id/btnDelete" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/btn_minus1"
