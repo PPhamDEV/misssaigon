@@ -9,6 +9,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -19,9 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener {
-
-    //TODO
-    // OrderItemList Formatierung Nummer und Preis
 
     private List<OrderItem> menu;
     private float sum = 0;
@@ -118,21 +116,42 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     }
 
     private LinearLayout configureOrderItemTextView(String number, float price) {
-        TextView tvNumber = new TextView(this);
-        String itemNumber = mulitplicationFactor+"x "+number+".";
-        tvNumber.setText(itemNumber);
-        tvNumber.setTextAppearance(getApplicationContext(),R.style.orderItem);
-        TextView tvPrice = new TextView(this);
-        String itemPrice = String.format("%.2f", price)+" €";
-        tvPrice.setText(itemPrice);
-        tvPrice.setTextAppearance(getApplicationContext(),R.style.orderItem);
         LinearLayout itemWrapper = new LinearLayout(this);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        params.setMargins(40,0,200,0);
-        tvNumber.setLayoutParams(params);
+        LinearLayout.LayoutParams wrapperParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        wrapperParams.setMargins(44, 6, 44, 6); // Abstand am Anfang und am Ende
         itemWrapper.setOrientation(LinearLayout.HORIZONTAL);
+        itemWrapper.setLayoutParams(wrapperParams);
+
+        TextView tvNumber = new TextView(this);
+        String itemNumber = mulitplicationFactor + "x\t" + number + ".";
+        tvNumber.setText(itemNumber);
+        tvNumber.setTextAppearance(getApplicationContext(), R.style.orderItem);
+        LinearLayout.LayoutParams numberParams = new LinearLayout.LayoutParams(
+                0,
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                1.0f
+        );
+        numberParams.setMargins(8, 0, 0, 0); // Abstand am Anfang von tvNumber
+        tvNumber.setLayoutParams(numberParams);
+
+        TextView tvPrice = new TextView(this);
+        String itemPrice = String.format("%.2f", price) + " €";
+        tvPrice.setText(itemPrice);
+        tvPrice.setTextAppearance(getApplicationContext(), R.style.orderItem);
+        LinearLayout.LayoutParams priceParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        priceParams.setMargins(0, 0, 8, 0); // Abstand am Ende von tvPrice
+        tvPrice.setLayoutParams(priceParams);
+        tvPrice.setGravity(Gravity.END); // Text am Ende ausrichten
+
         itemWrapper.addView(tvNumber);
         itemWrapper.addView(tvPrice);
+
         return itemWrapper;
     }
 
