@@ -12,25 +12,40 @@
         android:id="@+id/wrapper"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="79dp"
-        tools:layout_editor_absoluteY="105dp">
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="-16dp">
 
         <TextView
             android:id="@+id/btnReis"
-            android:layout_width="90dp"
+            android:layout_width="70dp"
             android:layout_height="50dp"
             android:paddingLeft="14dp"
             android:paddingTop="7dp"
             android:paddingRight="14dp"
             android:paddingBottom="7dp"
-            android:text="Reis / statt Reis"
+            android:text="Reis"
             android:textAlignment="center"
-            android:textSize="12sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/btnH"
             app:layout_constraintEnd_toEndOf="@+id/btnSoße"
-            app:layout_constraintStart_toStartOf="@+id/btnSoße"
             app:layout_constraintTop_toTopOf="@+id/btnH"
             app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/btnStattReis"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="8dp"
+            android:paddingLeft="14dp"
+            android:paddingTop="7dp"
+            android:paddingRight="14dp"
+            android:paddingBottom="7dp"
+            android:text="Statt Reis"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnReis"
+            app:layout_constraintEnd_toStartOf="@+id/btnReis"
+            app:layout_constraintTop_toTopOf="@+id/btnReis" />
 
         <TextView
             android:id="@+id/btn1"
@@ -109,78 +124,63 @@
 
         <TextView
             android:id="@+id/btnDone"
-            android:layout_width="113dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
+            android:layout_width="157dp"
+            android:layout_height="60dp"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
             android:text="Lösche Liste"
             android:textAlignment="center"
             android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@+id/scrollView"
-            app:layout_constraintTop_toTopOf="@+id/scrollView" />
+            app:layout_constraintEnd_toEndOf="@+id/btnGroß"
+            app:layout_constraintTop_toTopOf="@+id/tvDisplay" />
 
         <TextView
             android:id="@+id/btnGetränk"
-            android:layout_width="55dp"
+            android:layout_width="70dp"
             android:layout_height="50dp"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
             android:text="G"
             android:textAlignment="center"
             android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@+id/btnGetränkP"
-            app:layout_constraintStart_toEndOf="@+id/btnSubmit"
+            app:layout_constraintEnd_toEndOf="@+id/btnReis"
             app:layout_constraintTop_toTopOf="@+id/btn_plus1" />
 
         <TextView
-            android:id="@+id/btnBier"
-            android:layout_width="55dp"
-            android:layout_height="50dp"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:text="B+P"
-            android:textAlignment="center"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/btnReis"
-            app:layout_constraintTop_toTopOf="@+id/btnGetränkP" />
-
-        <TextView
             android:id="@+id/btnGetränkP"
-            android:layout_width="55dp"
+            android:layout_width="70dp"
             android:layout_height="50dp"
+            android:layout_marginEnd="8dp"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
             android:text="G+P"
             android:textAlignment="center"
             android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@+id/btnBier"
-            app:layout_constraintStart_toEndOf="@+id/btnGetränk"
+            app:layout_constraintEnd_toStartOf="@+id/btnGetränk"
             app:layout_constraintTop_toTopOf="@+id/btnGetränk" />
 
         <TextView
             android:id="@+id/btnDeleteLast"
             android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginStart="20dp"
+            android:layout_height="111dp"
             android:gravity="center"
             android:text="-"
             android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/scrollView"
-            app:layout_constraintTop_toTopOf="@+id/scrollView" />
+            app:layout_constraintStart_toStartOf="@+id/btnDone"
+            app:layout_constraintTop_toTopOf="@+id/btnGroß" />
 
         <TextView
             android:id="@+id/btn7"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="3dp"
-            android:layout_marginTop="140dp"
+            android:layout_marginTop="30dp"
             android:padding="10dp"
             android:text="7"
             android:textAlignment="center"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/tvDisplay"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/tvDisplay" />
 
         <TextView
             android:id="@+id/btn8"
@@ -327,7 +327,7 @@
             android:id="@+id/btnGroß"
             android:layout_width="90dp"
             android:layout_height="50dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginEnd="36dp"
             android:paddingLeft="14dp"
             android:paddingTop="7dp"
             android:paddingRight="14dp"
@@ -336,8 +336,8 @@
             android:textAlignment="center"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/btnA"
-            app:layout_constraintStart_toEndOf="@+id/btnA"
-            app:layout_constraintTop_toTopOf="@+id/btnA"
+            app:layout_constraintEnd_toStartOf="@+id/btn7"
+            app:layout_constraintTop_toTopOf="@+id/btn7"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
@@ -372,33 +372,35 @@
             app:layout_constraintTop_toTopOf="@+id/btnG"
             app:layout_constraintVertical_bias="0.0" />
 
+
         <TextView
             android:id="@+id/tvDisplay"
             android:layout_width="250dp"
             android:layout_height="55dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="53dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="152dp"
             android:background="@drawable/border"
             android:gravity="center"
             android:textSize="24sp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <ScrollView
             android:id="@+id/scrollView"
-            android:layout_width="350dp"
+            android:layout_width="250dp"
             android:layout_height="417dp"
-            android:layout_marginEnd="100dp"
+            android:layout_marginEnd="30dp"
             android:background="@drawable/border"
+            android:scrollbars="vertical"
             app:layout_constraintBottom_toBottomOf="@+id/btnH"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvDisplay">
+            app:layout_constraintEnd_toStartOf="@+id/btnDeleteLast"
+            app:layout_constraintTop_toTopOf="@+id/tvDisplay"
+            app:layout_constraintVertical_bias="0.0">
 
             <LinearLayout
                 android:id="@+id/orderList"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="53dp"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="@+id/btnH"

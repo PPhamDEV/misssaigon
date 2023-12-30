@@ -105,12 +105,12 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 tvSummeDisplay.setText(content);
                 tvSummeDisplay.setTypeface(tvDisplay.getTypeface(), Typeface.BOLD);
                 ScrollView scrollView = findViewById(R.id.scrollView);
-                scrollView.post(new Runnable() {
+                scrollView.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         scrollView.fullScroll(View.FOCUS_DOWN);
                     }
-                });
+                }, 100);
             }
         }
     }
@@ -129,6 +129,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         String itemNumber = mulitplicationFactor + "x\t" + number + ".";
         tvNumber.setText(itemNumber);
         tvNumber.setTextAppearance(getApplicationContext(), R.style.orderItem);
+        tvNumber.setTypeface(null, Typeface.BOLD);
         LinearLayout.LayoutParams numberParams = new LinearLayout.LayoutParams(
                 0,
                 LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -141,6 +142,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         String itemPrice = String.format("%.2f", price) + " €";
         tvPrice.setText(itemPrice);
         tvPrice.setTextAppearance(getApplicationContext(), R.style.orderItem);
+        tvPrice.setTypeface(null, Typeface.BOLD);
         LinearLayout.LayoutParams priceParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
@@ -216,8 +218,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         case R.id.btnSoße:
         case R.id.btnGetränk:
         case R.id.btnGetränkP:
-        case R.id.btnBier:
         case R.id.btnReis:
+        case R.id.btnStattReis:
         case R.id.btnDeleteLast:
             changeColorMainButtons(v, event);
             break;
@@ -269,14 +271,14 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         btnSosse.setBackgroundColor(Color.parseColor("#80ababab"));
         TextView btnReis = findViewById(R.id.btnReis);
         btnReis.setBackgroundColor(Color.parseColor("#80ababab"));
+        TextView btnStattReis = findViewById(R.id.btnStattReis);
+        btnStattReis.setBackgroundColor(Color.parseColor("#80ababab"));
         TextView btnDeleteLast = findViewById(R.id.btnDeleteLast);
         btnDeleteLast.setBackgroundColor(Color.parseColor("#80ababab"));
         TextView btnGetränk = findViewById(R.id.btnGetränk);
         btnGetränk.setBackgroundColor(Color.parseColor("#80ababab"));
         TextView btnGetränkP = findViewById(R.id.btnGetränkP);
         btnGetränkP.setBackgroundColor(Color.parseColor("#80ababab"));
-        TextView btnBier = findViewById(R.id.btnBier);
-        btnBier.setBackgroundColor(Color.parseColor("#80ababab"));
         TextView btnX1 = findViewById(R.id.btn_plus1);
         TextView btnX2 = findViewById(R.id.btn_minus1);
 
@@ -302,10 +304,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         btnBeilage.setOnClickListener(listener);
         btnSosse.setOnClickListener(listener);
         btnReis.setOnClickListener(listener);
+        btnStattReis.setOnClickListener(listener);
         btnDeleteLast.setOnClickListener(listener);
         btnGetränk.setOnClickListener(listener);
         btnGetränkP.setOnClickListener(listener);
-        btnBier.setOnClickListener(listener);
         btnX1.setOnClickListener(listener);
         btnX2.setOnClickListener(listener);
 
@@ -330,10 +332,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         btnBeilage.setOnTouchListener(this);
         btnSosse.setOnTouchListener(this);
         btnReis.setOnTouchListener(this);
+        btnStattReis.setOnTouchListener(this);
         btnDeleteLast.setOnTouchListener(this);
         btnGetränk.setOnTouchListener(this);
         btnGetränkP.setOnTouchListener(this);
-        btnBier.setOnTouchListener(this);
         btnX1.setOnTouchListener(this);
         btnX2.setOnTouchListener(this);
     }
@@ -410,7 +412,12 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             this.mulitplicationFactor = 1;
         }
         if(v.getId() == R.id.btnReis){
-            addItemToOrderList(tvDisplay, "Reis / statt Reis");
+            addItemToOrderList(tvDisplay, "Reis");
+            tvDisplay.setText("1x");
+            this.mulitplicationFactor = 1;
+        }
+        if(v.getId() == R.id.btnStattReis){
+            addItemToOrderList(tvDisplay, "Statt Reis");
             tvDisplay.setText("1x");
             this.mulitplicationFactor = 1;
         }
@@ -421,11 +428,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         }
         if(v.getId() == R.id.btnGetränkP){
             addItemToOrderList(tvDisplay, "Getränk mit Pfand");
-            tvDisplay.setText("1x");
-            this.mulitplicationFactor = 1;
-        }
-        if(v.getId() == R.id.btnBier){
-            addItemToOrderList(tvDisplay, "Bier mit Pfand");
             tvDisplay.setText("1x");
             this.mulitplicationFactor = 1;
         }
