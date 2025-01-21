@@ -97,7 +97,7 @@ public class MenuService {
         menu.add(new OrderItem("Reis", 3.5F));
         menu.add(new OrderItem("Statt Reis", 3.8F));
         menu.add(new OrderItem("Getränk", 2.3F));
-        menu.add(new OrderItem("Getränk mit Pfand", 2.45F));
+        menu.add(new OrderItem("Getränk mit Pfand", 2.55F));
         return menu;
     }
 }
